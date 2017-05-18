@@ -28,6 +28,7 @@ switch (job){
         console.log('Denisas yra kazkas kitas');
 }
 */
+/*
 var friend1 = {
     height: 185,
     age: 25,
@@ -68,7 +69,7 @@ if ( friend1Score > friend2Score && friend1Score > friend3Score){
 } else {
     console.log('lygiosios');
 }
-
+*/
 // functions   
 /*
 function calculateAge(yearOfbirth){
@@ -182,7 +183,7 @@ console.log(auste);
 
 */
 // v2.0
-
+/*
 var auste = {
     name: 'Auste',
     lastName: 'Sarpaliute',
@@ -210,3 +211,195 @@ var denis = {
 denis.calculateAge();
 
 console.log(denis);
+
+var bartas = new Object();
+bartas.name = 'Bartas';
+bartas.lastName = 'Stankevic';
+bartas.yearOfBirt = 1991;
+bartas.isMarried = true;
+bartas.family = ['Katazina', 'Mama', 'Tetis', 'Domas'];
+
+bartas.calculateAge = function(){
+    this.age = 2017 - this.yearOfBirt;
+};
+bartas.calculateAge();
+console.log(bartas);
+
+
+var denisas = {
+    name: 'Denisas',
+    lastName: 'Jersovas',
+    gimimoMetai: 1989,
+    isMarried: false,
+    family: ['Auste', 'Mociute', 'Petrone', 'Mama', 'Tetis'],
+    job: 'Developer'
+};
+denisas.kiekMetu = function(){
+    this.metai = 2017 - this.gimimoMetai;
+}
+denisas.kiekMetu();
+console.log(denisas);
+// Loops 
+
+for ( i = 0; i < denisas.family.length ; i++){
+    console.log(denisas.family[i]);
+}
+
+for ( i = denisas.family.length - 1; i >= 0; i--){
+	console.log(denisas.family[i]);
+}
+*/
+/*
+var i = 0;
+while (i < denisas.family.length){
+    console.log(denisas.family[i]);
+    i++;
+}
+for ( i = 0 ; i <= 5; i++){
+    console.log(i);
+
+    if(i === 3){
+        break;
+    } // breaks loop at then it hits number 3 
+}
+for (i = 0; i <= 5 ; i++){
+    if (i === 3){
+        continue;
+    } // breake on number 3 and continues from second number
+    console.log(i);
+}
+*/
+
+/*
+
+
+function printFullAge(years){
+        var ages = [];
+        var isFullAges = [];
+
+                for ( var i = 0; i  < years.length; i++){
+                    ages[i] = 2017 - years[i];
+                }
+                       
+
+
+        for ( i = 0; i < ages.length; i++){
+            if(ages[i] >= 18){
+                console.log('You are full age, your age is ' + ages[i]);
+                isFullAges.push(true);
+            }else{
+                console.log('You are to young, your age is '+ ages[i]);
+                isFullAges.push(false);
+            }
+        }
+
+        return isFullAges;
+
+}
+var years = [1941, 1989, 1991, 2006, 1966];
+var full_1 = printFullAge(years);
+var full_2 = printFullAge([2011, 1940, 1999]);
+
+console.log(full_2);
+
+
+var as = new Object();
+
+function newAs(name, lastname, birth){
+    as.name = name;
+    as.lastName = lastname;
+    as.birth = birth;
+}
+newAs('denisas', 'jersovas', 1989);
+
+
+console.log(as);
+
+var john = 'John';
+function first(){
+    var a = "hi ";
+    second();
+    var x = a + john;
+    console.log(x);
+}
+function second(){
+    var b = "holla ";
+    third();
+    var z = b + john;
+    console.log(z);
+}
+function third(){
+    var c = 'labas ';
+    var g = c + john;
+    console.log(g);
+}
+first();
+*/
+// HOISTING
+/*
+calculateAge(1989);
+function calculateAge(year){
+    console.log(2017 - year);
+}
+
+// retirement(1990); hoisting - kilnojimas, neveikia su functions kurios yra var nurodytos
+var retirement = function(year){
+    console.log(65- (2017- year));
+};
+
+console.log(metai);
+var metai = 28;
+
+function foo(){
+    var metai = 65;
+    console.log(metai);
+}
+foo();
+console.log(metai);
+
+
+var q = 'labas';
+first();
+
+function first(){
+    var w = 'privet';
+    second();
+
+    function second(){
+        var c = 'holla';
+        console.log(q + w + c);
+    }
+}
+
+
+calculateAge(1941);
+
+function calculateAge(year){
+    console.log(2017 - year);
+    console.log(this);
+}
+*/
+var bartas = {
+    name: 'bartas',
+    yearOfBirt: 1991,
+    calculateAge: function(){
+        console.log(this);
+        console.log(2017 - this.yearOfBirt);
+
+        /*
+            function innerFunction(){
+                console.log(this);
+            }
+            innerFunction();
+        */
+    }
+};
+bartas.calculateAge();
+
+var mike = {
+    name: 'Mike',
+    yearOfBirt: 1945
+};
+mike.calculateAge = bartas.calculateAge;
+
+mike.calculateAge();
