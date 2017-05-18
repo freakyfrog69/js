@@ -375,6 +375,7 @@ function first(){
 calculateAge(1941);
 
 function calculateAge(year){
+function calculateAge(year){
     console.log(2017 - year);
     console.log(this);
 }
